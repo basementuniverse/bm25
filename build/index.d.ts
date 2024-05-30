@@ -10,6 +10,7 @@ export type CorpusOptions<T> = {
     processor?: (input: T) => string[];
     k1: number;
     b: number;
+    gamma: number;
 };
 export default class Corpus<T> {
     private static readonly MIN_TERM_LENGTH;

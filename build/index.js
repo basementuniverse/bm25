@@ -10,6 +10,7 @@ class Corpus {
                 .filter(w => w.length >= Corpus.MIN_TERM_LENGTH),
             k1: 1.5,
             b: 0.75,
+            gamma: 0,
         };
         this.options = Object.assign({}, this.defaultOptions, options);
         this.documents = documents.map(document => this.processDocument(document));
@@ -46,7 +47,7 @@ class Corpus {
         const averageDocumentLength = this.documents.reduce((sum, d) => sum + d.words.length, 0) / this.documents.length;
         return idf * ((tf * (this.options.k1 + 1)) /
             (tf + this.options.k1 * (1 - this.options.b +
-                this.options.b * document.words.length / averageDocumentLength)));
+                this.options.b * document.words.length / averageDocumentLength)) + this.options.gamma);
     }
     tf(term, document, partial) {
         term = term.toLowerCase();
