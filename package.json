@@ -1,6 +1,6 @@
 {
   "name": "@basementuniverse/bm25",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Search for terms in an array of documents",
   "main": "build/index.js",
   "scripts": {
